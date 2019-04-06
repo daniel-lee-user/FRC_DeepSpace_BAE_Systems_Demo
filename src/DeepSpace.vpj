@@ -1,0 +1,197 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="Other C/C++"
+    WorkingDir=".">
+    <Config
+        Name="Debug"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdDeepSpace"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -g -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Config
+        Name="Release"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdDeepSpace"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveCurrent"
+                OutputExts="*.o"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -O -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Rules Name="Compile">
+        <Rule
+            InputExts="*.s"
+            OutputExts="*.o"
+            LinkObject="1">
+            <Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+        </Rule>
+    </Rules>
+    <Files>
+        <Folder
+            Name="Source Files"
+            Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm">
+            <F N="main/cpp/Subsystems/Arduino.cpp"/>
+            <F N="main/cpp/Commands/Compressor_Off.cpp"/>
+            <F N="main/cpp/Commands/Compressor_On.cpp"/>
+            <F N="main/cpp/Commands/DriverTurn.cpp"/>
+            <F N="main/cpp/Subsystems/DriveTrain.cpp"/>
+            <F N="main/cpp/Commands/DriveUntilLine.cpp"/>
+            <F N="main/cpp/Commands/Hatch_Extend.cpp"/>
+            <F N="main/cpp/Commands/Hatch_Retract.cpp"/>
+            <F N="main/cpp/Subsystems/HatchServo.cpp"/>
+            <F N="main/cpp/Commands/LineFollow.cpp"/>
+            <F N="main/cpp/Subsystems/NetworkTables.cpp"/>
+            <F N="main/cpp/OI.cpp"/>
+            <F N="main/cpp/Subsystems/Piston.cpp"/>
+            <F N="main/cpp/Commands/Piston_Extend.cpp"/>
+            <F N="main/cpp/Commands/Piston_Off.cpp"/>
+            <F N="main/cpp/Commands/Piston_Retract.cpp"/>
+            <F N="main/cpp/Subsystems/PressureControl.cpp"/>
+            <F N="main/cpp/Commands/readColorSensors.cpp"/>
+            <F N="main/cpp/Robot.cpp"/>
+            <F N="main/cpp/Commands/Servo_Extend.cpp"/>
+            <F N="main/cpp/Commands/Servo_Retract.cpp"/>
+            <F N="main/cpp/Commands/TankDrive.cpp"/>
+            <F N="main/cpp/Commands/TurnToAngle.cpp"/>
+        </Folder>
+        <Folder
+            Name="Header Files"
+            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+            <F N="main/include/Subsystems/Arduino.h"/>
+            <F N="main/include/Commands/Compressor_Off.h"/>
+            <F N="main/include/Commands/Compressor_On.h"/>
+            <F N="main/include/Commands/DriverTurn.h"/>
+            <F N="main/include/Subsystems/DriveTrain.h"/>
+            <F N="main/include/Commands/DriveUntilLine.h"/>
+            <F N="main/include/Commands/Hatch_Extend.h"/>
+            <F N="main/include/Commands/Hatch_Retract.h"/>
+            <F N="main/include/Subsystems/HatchServo.h"/>
+            <F N="main/include/Commands/LineFollow.h"/>
+            <F N="main/include/Subsystems/NetworkTables.h"/>
+            <F N="main/include/OI.h"/>
+            <F N="main/include/Subsystems/Piston.h"/>
+            <F N="main/include/Commands/Piston_Extend.h"/>
+            <F N="main/include/Commands/Piston_Off.h"/>
+            <F N="main/include/Commands/Piston_Retract.h"/>
+            <F N="main/include/Subsystems/PressureControl.h"/>
+            <F N="main/include/Commands/readColorSensors.h"/>
+            <F N="main/include/Robot.h"/>
+            <F N="main/include/RobotMap.h"/>
+            <F N="main/include/Commands/Servo_Extend.h"/>
+            <F N="main/include/Commands/Servo_Retract.h"/>
+            <F N="main/include/Commands/TankDrive.h"/>
+            <F N="main/include/Commands/TurnToAngle.h"/>
+        </Folder>
+        <Folder
+            Name="Resource Files"
+            Filters="*.ico;*.cur;*.dlg"/>
+        <Folder
+            Name="Bitmaps"
+            Filters="*.bmp"/>
+        <Folder
+            Name="Other Files"
+            Filters="">
+            <F N="main/deploy/example.txt"/>
+        </Folder>
+    </Files>
+</Project>
